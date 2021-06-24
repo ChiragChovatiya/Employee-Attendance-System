@@ -1,0 +1,41 @@
+{% extends 'base.html'%}
+{% load crispy_forms_tags %}
+{% block content %}
+
+<br>
+<div class="container my-4">
+    <div class="row justify-content-center">
+        <div class="col-md-10 col-sm-12">
+            <div class="card mb-3">
+                <div class="card-body">
+                    <h1>List of Employee</h1><br>
+                    {% if employee_list%}
+                    <table class="table table-bordered table-hover">
+                        <thead class="thead-dark">
+                            <tr>
+                                <th>Employee Name</th>
+                                <th>Status</th>
+                                <th>Working hours(H:M:S)</th>
+                            </tr>
+                        </thead>
+                        {% for employee in employee_list %}
+                        <tr>
+                            <td>{{employee.0}}</td>
+                            <td>{{employee.1}}</td>
+                            <td>{{employee.2}}</td>
+                        </tr>
+                        {% endfor %}
+                    </table>
+                    {% else %}
+                    <!-- <p>There are no employees for today.</p> -->
+                    <h1>
+                        <p class="text-center">There are no employees for today.</p>
+                    </h1>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
